@@ -5,6 +5,7 @@
 3- create db               => go to phpMyAdmin and create db called (laravel8ecommercedb).
 4- go to .env and write :  DB_DATABASE=laravel8ecommercedb
 5- download template from   => https://github.com/surfsidemedia/Laravel-8-E-Commerce
+// I put the folder in resources->html files
 6- go to views and create directory called layouts.
 7- create base.blade.php inside layouts.
 8- go to index.html from no. 5 and take all code without the <main> section
