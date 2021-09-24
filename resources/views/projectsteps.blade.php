@@ -223,5 +223,134 @@ return view('livewire.user.user-dashboard-component')->layout('layouts.base');
 15- go to browser and login with the user account and from arrow press dashboard
 then with admin account too.
 
+//////////////////////////////////////////////////////////////////////
+
+// v3 : Changing the Login and Register Page Layout :
+
+// change login page :
+1- go to views->layouts->guest.blade.php and comment all the code and take the
+all code in base.blade.php and put it.
+
+2- go to views->auth->login.blade.php and comment all code and write :
+<x-guest-layout>
+// here put the login.html (only main section) from v1 num. 5
+<main id="main" class="main-site left-sidebar">
+
+    <div class="container">
+
+        <div class="wrap-breadcrumb">
+            <ul>
+                <li class="item-link"><a href="/" class="link">home</a></li>
+                <li class="item-link"><span>login</span></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">
+                <div class=" main-content-area">
+                    <div class="wrap-login-item ">
+                        <div class="login-form form-item form-stl">
+                            <x-jet-validation-errors class="mb-4" />
+                            <form name="frm-login" method="POST" action="{{route('login')}}">
+                                @csrf
+                                <fieldset class="wrap-title">
+                                    <h3 class="form-title">Log in to your account</h3>
+                                </fieldset>
+                                <fieldset class="wrap-input">
+                                    <label for="frm-login-uname">Email Address:</label>
+                                    <input type="email" id="frm-login-uname" name="email" placeholder="Type your email address" :value="old('email')" required autofocus>
+                                </fieldset>
+                                <fieldset class="wrap-input">
+                                    <label for="frm-login-pass">Password:</label>
+                                    <input type="password" id="frm-login-pass" name="password" placeholder="************" required autocomplete="current-password">
+                                </fieldset>
+
+                                <fieldset class="wrap-input">
+                                    <label class="remember-field">
+                                        <input class="frm-input " name="remember" id="rememberme" value="forever" type="checkbox"><span>Remember me</span>
+                                    </label>
+                                    <a class="link-function left-position" href="{{route('password.request')}}" title="Forgotten password?">Forgotten password?</a>
+                                </fieldset>
+                                <input type="submit" class="btn btn-submit" value="Login" name="submit">
+                            </form>
+                        </div>
+                    </div>
+                </div><!--end main products area-->
+            </div>
+        </div><!--end row-->
+
+    </div><!--end container-->
+
+</main>
+</x-guest-layout>
+
+3- to make the wrong email or password red :
+go to public->assets->css->style.css and write :
+
+.text-red-600 {
+    color: red;
+}
+
+// change register page :
+
+1- go to views->auth->register.blade.php and comment all code and write :
+<x-guest-layout>
+// here put the register.html (only main section) from v1 num. 5
+<main id="main" class="main-site left-sidebar">
+
+    <div class="container">
+
+        <div class="wrap-breadcrumb">
+            <ul>
+                <li class="item-link"><a href="/" class="link">home</a></li>
+                <li class="item-link"><span>Register</span></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">
+                <div class=" main-content-area">
+                    <div class="wrap-login-item ">
+                        <div class="register-form form-item ">
+                            <x-jet-validation-errors class="mb-4" />
+                            <form class="form-stl" action="{{route('register')}}" name="frm-login" method="POST" >
+                                @csrf
+                                <fieldset class="wrap-title">
+                                    <h3 class="form-title">Create an account</h3>
+                                    <h4 class="form-subtitle">Personal infomation</h4>
+                                </fieldset>
+                                <fieldset class="wrap-input">
+                                    <label for="frm-reg-lname">Name*</label>
+                                    <input type="text" id="frm-reg-lname" name="name" placeholder="Your name*" :value="name" required autofocus autocomplete="name">
+                                </fieldset>
+                                <fieldset class="wrap-input">
+                                    <label for="frm-reg-email">Email Address*</label>
+                                    <input type="email" id="frm-reg-email" name="email" placeholder="Email address" required :value="email">
+                                </fieldset>
+                                <fieldset class="wrap-title">
+                                    <h3 class="form-title">Login Information</h3>
+                                </fieldset>
+                                <fieldset class="wrap-input item-width-in-half left-item ">
+                                    <label for="frm-reg-pass">Password *</label>
+                                    <input type="password" id="frm-reg-pass" name="password" placeholder="Password" required autocomplete="new-password">
+                                </fieldset>
+                                <fieldset class="wrap-input item-width-in-half ">
+                                    <label for="frm-reg-cfpass">Confirm Password *</label>
+                                    <input type="password" id="frm-reg-cfpass" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
+                                </fieldset>
+                                <input type="submit" class="btn btn-sign" value="Register" name="register">
+                            </form>
+                        </div>
+                    </div>
+                </div><!--end main products area-->
+            </div>
+        </div><!--end row-->
+
+    </div><!--end container-->
+</main>
+</x-guest-layout>
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 
